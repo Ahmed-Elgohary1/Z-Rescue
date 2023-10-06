@@ -1,0 +1,7 @@
+#page-content {
+    background-image: url("C:\Users\DELL\Downloads\Untitled-2.png");
+    background-size: cover; /* Scale the image to fill the container */
+    background-position: center; /* Position the image at the center */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add shading effect with box shadow */
+  }
