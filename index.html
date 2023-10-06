@@ -140,6 +140,7 @@
 
 
 
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
@@ -154,27 +155,40 @@
                 console.log(selectedRank);
     
                 $.ajax({
-                    url: 'http://localhost:8080/api/Issues/rank?rank=' + selectedRank,
+                    url: 'http://localhost:8081/api/Issues/rank?rank=' + selectedRank,
                     type: 'GET',
                     success: function(response) {
                         // Handle the response and update the UI accordingly
                         var resultContainer = $('#resultContainer');
                         resultContainer.empty();
     
+
+
+                        console.log(response);
+
+
+
                         if (response.length > 0) {
                             var table = $('<table>').addClass('table');
                             var tableHead = $('<thead>').appendTo(table);
                             var tableBody = $('<tbody>').appendTo(table);
                             var tableRow = $('<tr>').appendTo(tableHead);
-                            $('<th>').text('ID').appendTo(tableRow);
                             $('<th>').text('Score').appendTo(tableRow);
+                            $('<th>').text('Temperature').appendTo(tableRow);
+                            $('<th>').text('Humidity').appendTo(tableRow);
+                             $('<th>').text('windspeed').appendTo(tableRow);
+
+
                             // Add additional columns for other details
     
                             response.forEach(function(record) {
+
+                                console.log({record});
                                 var row = $('<tr>').appendTo(tableBody);
-                                $('<td>').text(record.id).appendTo(row);
                                 $('<td>').text(record.score).appendTo(row);
-    
+                                $('<td>').text(record.temperature).appendTo(row);
+                                $('<td>').text(record.humidity).appendTo(row);
+                                $('<td>').text(record.windspeed).appendTo(row);
                                 // Add additional columns for other details
     
                                 var detailsButton = $('<button>').addClass('btn btn-primary btn-sm').text('Details').appendTo(row);
